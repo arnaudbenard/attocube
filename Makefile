@@ -1,12 +1,12 @@
 .PHONY: all clean
-CC=gcc
+CC=clang++
 
 attocube: attocube.o
 	${CC} attocube.o -o attocube
 
 
-attocube.o: attocube.c
-	${CC} -c attocube.c -o attocube.o
+attocube.o: attocube.cpp daisybase.h metadata.h
+	${CC} -c attocube.cpp -o attocube.o
 
 clean:
 	rm -f *.o attocube *.exe
