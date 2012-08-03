@@ -9,4 +9,4 @@ attocube.o: attocube.c
 	${CC} -c attocube.c -o attocube.o
 
 clean:
-	rm -f *.o attocube
+	rm -f *.o attocube *.exe
