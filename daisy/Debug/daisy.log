@@ -1,0 +1,30 @@
+﻿Build started 8/6/2012 11:49:14 PM.
+     1>Project "C:\cygwin\home\arnaud\daisy\daisy\daisy.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\daisy.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\daisy.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\daisy.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt daisy.cpp
+         daisy.cpp
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\daisy.exe.embed.manifest.res" Debug\daisy_manifest.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\cygwin\home\arnaud\daisy\Debug\daisy.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\apnievergelt\Documents\FPS_12_05_08 /LIBPATH:C:\Users\apnievergelt\Documents\OpenGL\daisy\daisy daisybase.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\daisy.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\cygwin\home\arnaud\daisy\Debug\daisy.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\cygwin\home\arnaud\daisy\Debug\daisy.lib" /MACHINE:X86 Debug\daisy.exe.embed.manifest.res
+         Debug\daisy.obj
+         Debug\stdafx.obj
+         daisybase.lib
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\daisy.exe.embed.manifest" /manifest Debug\daisy.exe.intermediate.manifest
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         daisy.vcxproj -> C:\cygwin\home\arnaud\daisy\Debug\daisy.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\daisy.unsuccessfulbuild".
+         Touching "Debug\daisy.lastbuildstate".
+     1>Done Building Project "C:\cygwin\home\arnaud\daisy\daisy\daisy.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.76

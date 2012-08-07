@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: debug.ngc,v 1.2 2011/12/20 10:19:35 zaphod Exp $ -->
+<Panel Name="Debugging" Icon="debug.xpm" >
+
+  <Widget Type="Box" Caption="Flash Tool"              X="0" Y="0" >
+    <Widget Type="MiniFlasher"                         X="0" Y="0" Address="0x10e3" />
+  </Widget>
+  <Widget Type="Box" Caption="Generic Set Telegram"    X="0" Y="1" >
+    <Widget Type="Edit"   Caption="Address [Hex]"      X="0" Y="0" Address="0x102F" Index="0" Display="Hex" Align="Bottom" />
+    <Widget Type="Edit"   Caption="Index"              X="1" Y="0" Address="0x102F" Index="1" Align="Bottom" />
+    <Widget Type="Edit"   Caption="Value [Hex]"        X="2" Y="0" Address="0x102F" Index="2" Display="Hex" Align="Bottom" />
+    <Widget Type="Button" Caption="Commit"             X="3" Y="0" Address="0x102F" Index="3" Align="Bottom" />
+  </Widget>
+
+  <Widget Type="Box" Caption="FPGA Access"             X="0" Y="2" >
+    <Widget Type="Script" Caption=""                   X="0" Y="0" >
+      <!--<Connect Name="FpgaAddress"  Address="3" Index="0" />-->
+      <Connect Name="FpgaPT"       Address="3" Index="4" />
+      <Connect Name="FpgaPI"       Address="3" Index="5" />
+      <Connect Name="FpgaPN"       Address="3" Index="6" />
+      <Connect Name="FpgaValue"    Address="3" Index="7" />
+      <Connect Name="FpgaCommand"  Address="3" Index="8" />
+      <Connect Name="CommitVal"    Address="3" Index="10" />
+      <Connect Name="CommitCmd"    Address="3" Index="9" />
+      <Connect Name="CommitGet"    Address="3" Index="11" />
+    </Widget>
+    <Widget Type="Label" Caption="pget answer [Hex]" Display="Hex" Address="0x3" Index="7"  X="0" Y="1" Alignment="Left"/>
+  </Widget>
+
+  <Widget Type="Box" Caption="Debug Channel"           X="1" Y="0" Height="6">
+    <Widget Type="Box" Caption="Channel 7"             X="0" Y="0">
+      <Widget Type="Combo" Caption="Connect"           X="0" Y="0" Choices="disable=0:enable=8" Address="48" Index="7" Persist="1"/>
+      <Widget Type="Combo" Caption="Signal"            X="1" Y="0" Choices="disable=0:enable=19" Address="49" Index="7" Persist="1"/>
+      <Widget Type="Edit" Caption="Points"             X="2" Y="0" Min="1" Max="65535" Address="50" Index="7" Persist="1"/>
+      <Widget Type="Edit" Caption="Average"            X="3" Y="0" Min="0" Max="65535" Address="51" Index="7" Persist="1"/>
+    </Widget>
+	
+    <Widget Type="Box" Caption="FPGA Filter"           X="0" Y="1"  >
+      <Widget Type="Edit"   Caption="Type"             X="0" Y="0" Address="0x57" Index="0" DefVal="-1" />
+      <Widget Type="Edit"   Caption="PT"               X="1" Y="0" Address="0x57" Index="1" DefVal="-1" />
+      <Widget Type="Edit"   Caption="PI"               X="2" Y="0" Address="0x57" Index="2" DefVal="-1" />
+      <Widget Type="Edit"   Caption="PN"               X="3" Y="0" Address="0x57" Index="3" DefVal="-1" />
+      <Widget Type="Edit"   Caption="Data"             X="4" Y="0" Address="0x57" Index="4" DefVal="-1" />
+    </Widget>
+  
+    <View Channel="7"    Caption=""                    X="0" Y="3" >
+      <Plugin Type="ASCII Filter" />
+      <Plugin Type="ASCII Trace Display" />
+    </View>
+  </Widget>
+
+</Panel>

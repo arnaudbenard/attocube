@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- N-Hands Product Spec for FPS -->
+<!-- $Id: fps.nps,v 1.8 2011/12/20 10:19:35 zaphod Exp $ -->
+<Productspec Code="0x01000000" Caption="FPS">
+
+  <!-- Controller Properties -->
+  <Controller DataChannels="10"
+              HasAfmLockin="0"
+              HasScanner="0" >
+    <Variant Code="0x8100" Caption="FPS"/>
+  </Controller>
+
+  <!-- Server & Booting -->
+  <Server Name="daisysrv" Port="7900">
+  </Server>
+
+  <!-- Data Channels & Groups -->
+  <Data>
+    <Groups>
+      <Group Id="0"  Name="Disabled"          Abbrev="DIS"     Trigger="0"   ChannelDescr="Name"   Formats=""
+             Properties="HidePage"                          />
+
+      <Group Id="7"  Name="Time"              Abbrev="LN"      Trigger="2"   ChannelDescr="Name"   Formats=""
+             Properties="StoreContinous StoreLocal StoreRetrigger ShowSource ShowAverage ShowSampleTime ShowStream"/>
+
+      <Group Id="11"  Name="Frequency 1"      Abbrev="FFT1"    Trigger="11"  ChannelDescr="Name"   Formats=""
+             Properties="StoreContinous StoreLocal StoreRetrigger ShowSampleTime ShowStream"/>
+
+      <Group Id="12"  Name="Frequency 2"      Abbrev="FFT2"    Trigger="12"  ChannelDescr="Name"   Formats=""
+             Properties="StoreContinous StoreLocal StoreRetrigger ShowSampleTime ShowStream"/>
+
+      <Group Id="13"  Name="Frequency 3"      Abbrev="FFT3"    Trigger="13"  ChannelDescr="Name"   Formats=""
+             Properties="StoreContinous StoreLocal StoreRetrigger ShowSampleTime ShowStream"/>
+
+    </Groups>
+  </Data>
+
+  <!-- GUI settings -->
+  <GuiSettings ParameterSnapshot="0"/>
+
+  <!-- Mandatory String Constants -->
+  <Strings>
+    <String Name="SignalNames" Text="Lasertemp=2:Chassistemp=4:Pos 1=5:AC 1=6:DC 1=7:Aux 1=8:Pos 2=9:AC 2=10:DC 2=11:Aux 2=12:Pos 3=13:AC 3=14:DC 3=15:Aux 3=16:ACRaw 1=17:DCRaw 1=18:ACRaw 2=19:DCRaw 2=20:ACRaw 3=21:DCRaw 3=22:FFT1=27:FFT2=28:FFT3=29"/>
+    <String Name="TriggerNames" Text="Disabled:Time=2:FFT 1=11:FFT 2=12:FFT 3=13"/>
+  </Strings>
+
+</Productspec>

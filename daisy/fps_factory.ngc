@@ -1,0 +1,24 @@
+<Panel Name="Factory Settings" Icon="channels.xpm">
+  
+  <Widget Type="Box" Style="Flat"  X="0" Y="0" >
+      <Widget Type="Button" Caption="Unlock"            Address="0x1702"   Index="0"   X="0" Y="0" Data="0x7fc39e18" Toggle="1" Align="VCenter" />
+      <Widget Type="Button" Caption="Save"              Address="0x1703"   Index="0"   X="1" Y="0" Data="1" Toggle="0" Align="VCenter" />
+      <Widget Type="Led"    Caption=""            Address="0x1704"   Index="0"   X="2" Y="0" Grey="0" Red="1" />
+  </Widget>
+  
+  <Widget Type="Box" Style="Flat" X="0" Y="1"  >
+    <Widget Type="Label" Caption="Serial #"         X="0" Y="0"   />
+    <Widget Type="Label" Caption="Axis count"       X="0" Y="1"   />
+    <Widget Type="Label" Caption="LAN"              X="0" Y="2"   />
+    <Widget Type="Label" Caption="WLAN"             X="0" Y="3"   />
+    <Widget Type="Label" Caption="Wavelength"       X="0" Y="4"   />
+    <Widget Type="Xedit"  Caption=""                X="1" Y="0" Address="0x66F" Index="0"  Display="Decimal" Persist="0" />
+    <Widget Type="Xedit"  Caption=""                X="1" Y="1" Address="0x66C" Index="0"  Display="Decimal" Persist="0" />
+    <Widget Type="Check"  Caption=""                X="1" Y="2" Address="0x66D" Index="0"  Persist="0" />
+    <Widget Type="Check"  Caption=""                X="1" Y="3" Address="0x66E" Index="0"  Persist="0" />
+    <Widget Type="Xedit"  Caption=""                X="1" Y="4" Address="0x604" Index="0"  Display="Float" Scale="1000000." Unit="m" Prefix="n" FixPrefix="On" Accuracy="9" Persist="0" />
+  </Widget>
+
+  <Widget Type="Label"                              X="1" Y="0" Width="10" />
+  <Widget Type="Label"                              X="0" Y="2" Height="10" />
+</Panel>

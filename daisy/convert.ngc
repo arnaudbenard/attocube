@@ -1,0 +1,11 @@
+<Panel Name="Converter" Icon="debug.xpm" >
+  <Widget Type="Box" Caption="Converter"  X="0" Y="0" Align="Top Left" Margin="20" >
+    <View Channel="14"  Caption="converter"  ChannelSelector="Hide" TriggerSnapshotButtons="Hide" X="0" Y="0" >
+      <Plugin Type="Disc Writer"  Caption="converter" >
+        <Option Name="DisplayRead" Value="1"/>
+      </Plugin>
+    </View>
+  </Widget>
+				
+</Panel>
+

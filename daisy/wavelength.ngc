@@ -1,0 +1,8 @@
+<Panel Name="FPS Wavelength" Icon="debug.xpm" Product="0x01000000" >
+
+    <Widget Type="Label"  Caption="Wavelength:"  X="0" Y="0" Rich="0" Align="Left"           />
+    <Widget Type="Xedit"  Caption=""             X="1" Y="0" Address="0x604" Index="0"  Display="Float" Scale="1000000." Unit="m" Prefix="n" FixPrefix="On" Accuracy="9" Persist="1" />
+    <Widget Type="Box"    Style="Flat"           X="2" Y="0" Width="20" />
+    <Widget Type="Box"    Style="Flat"           X="0" Y="1" Height="20" />
+
+</Panel>

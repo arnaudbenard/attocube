@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: calibration.ngc,v 1.3 2011/12/20 10:19:35 zaphod Exp $ -->
+<Panel Name="FPS Calibration" Icon="debug.xpm" Product="0x01000000" >
+  
+  <Widget Type="Constant" Address="0x39"   Index="1" DefVal="1" />     <!-- Channel 1 is locked and not available for dynamic channel management -->
+  <Widget Type="Constant" Address="0x39"   Index="2" DefVal="1" />     <!-- Channel 2 is locked and not available for dynamic channel management -->
+  <Widget Type="Constant" Address="0x39"   Index="3" DefVal="1" />     <!-- Channel 3 is locked and not available for dynamic channel management -->
+  <Widget Type="Constant" Address="0x39"   Index="4" DefVal="1" />     <!-- Channel 4 is locked and not available for dynamic channel management -->
+  <Widget Type="Constant" Address="0x31"   Index="1" DefVal="20" />    <!-- DC -->
+  <Widget Type="Constant" Address="0x31"   Index="2" DefVal="21" />    <!-- AC -->
+  <Widget Type="Constant" Address="0x31"   Index="3" DefVal="22" />    <!-- Phi -->
+  <Widget Type="Constant" Address="0x31"   Index="4" DefVal="23" />    <!-- Position -->
+  <Widget Type="Constant" Address="0x32"   Index="1" DefVal="4000" />  <!-- 100ms -->
+  <Widget Type="Constant" Address="0x32"   Index="2" DefVal="4000" />  <!-- 100ms -->
+  <Widget Type="Constant" Address="0x32"   Index="3" DefVal="4000" />  <!-- 100ms -->
+  <Widget Type="Constant" Address="0x32"   Index="4" DefVal="4000" />   <!-- 10ms -->
+  <Widget Type="Constant" Address="0x30"   Index="1" DefVal="2" />     
+  <Widget Type="Constant" Address="0x30"   Index="2" DefVal="2" />     
+  <Widget Type="Constant" Address="0x30"   Index="3" DefVal="2" />     
+  <Widget Type="Constant" Address="0x30"   Index="4" DefVal="2" />         
+  <Widget Type="Constant" Address="0x35"   Index="1" DefVal="1" />     
+  <Widget Type="Constant" Address="0x35"   Index="2" DefVal="1" />     
+  <Widget Type="Constant" Address="0x35"   Index="3" DefVal="1" />     
+  <Widget Type="Constant" Address="0x35"   Index="4" DefVal="1" />  
+  
+  <Widget Type="Box"   Style="Flat"                                                            X="0" Y="0" >
+    <Macro Type="Repeater" Count="3" >
+      <Widget Type="Box"   Caption="Calibration Axis $Counter$"                                                   X="0" Y="$Counter$"   >  
+        <Widget Type="Label"  Caption="DC Min/Max"     Rich="0"  Align="Left"                    X="0" Y="1" />
+        <Widget Type="Xedit"  Caption=""                      Address="0x610" Index="$Counter$"  X="1" Y="1"   ReadOnly="1" Persist="1" />
+        <Widget Type="Xedit"  Caption=""                      Address="0x611" Index="$Counter$"  X="2" Y="1"   ReadOnly="1" Persist="1" />
+        <Widget Type="Label"  Caption="AC Min/Max"     Rich="0"  Align="Left"                    X="0" Y="2" />
+        <Widget Type="Xedit"  Caption=""                      Address="0x612" Index="$Counter$"  X="1" Y="2"   ReadOnly="1" Persist="1" />
+        <Widget Type="Xedit"  Caption=""                      Address="0x613" Index="$Counter$"  X="2" Y="2"   ReadOnly="1" Persist="1" />
+        <Widget Type="Label"  Caption="DC Offset/Gain" Rich="0"  Align="Left"                    X="0" Y="3" />
+        <Widget Type="Xedit"  Caption=""                      Address="0x605" Index="$Counter$"  X="1" Y="3"   Persist="1" />
+        <Widget Type="Xedit"  Caption=""                      Address="0x606" Index="$Counter$"  X="2" Y="3"   Persist="1" />
+        <Widget Type="Label"  Caption="AC Offset/Gain" Rich="0"  Align="Left"                    X="0" Y="4" />
+        <Widget Type="Xedit"  Caption=""                      Address="0x607" Index="$Counter$"  X="1" Y="4"   Persist="1" />
+        <Widget Type="Xedit"  Caption=""                      Address="0x608" Index="$Counter$"  X="2" Y="4"   Persist="1" />
+        <Widget Type="Label"  Caption="Position"              Rich="0" Align="Left"              X="0" Y="8" />
+        <Widget Type="Button" Caption="Reset"                 Address="0x60D" Index="$Counter$"          X="1" Y="8"  Align="VCenter" />
+      </Widget>
+    </Macro>
+    
+    <Widget Type="Box" Style="Flat"                                                              X="0" Y="2" Height="20" />
+  </Widget>
+  
+  <Widget Type="Box"   Style="Flat"                                                            X="1" Y="0" Width="10" >
+    <Widget Type="Box"   Caption="AC"                                                            X="1" Y="1" Height="10"  >  
+      <View Channel="1"    Caption="DC"   ChannelSelector="Hide"  TriggerSnapshotButtons="Hide"  X="0" Y="1" >
+        <Plugin Type="Disc Writer"   Caption="Slave 1" />
+        <Plugin Type="Line Display"  Caption="Slave 1" Size="50" >
+          <Option Name="DisplayXRangeButtons" Value="1" />
+          <Option Name="DisplaySelectButtons" Value="0" />
+          <Option Name="DataPhysVal"          Value="1" />
+          <Option Name="DataUnitVal"          Value="-1" />
+        </Plugin>
+      </View>
+    </Widget>
+    
+    <Widget Type="Box"   Caption="DC"                                                             X="2" Y="1" Height="10"  >  
+      <View Channel="2"    Caption="AC"       ChannelSelector="Hide"  TriggerSnapshotButtons="Hide"  X="0" Y="1" >
+        <Plugin Type="Disc Writer"   Caption="Slave 2" />
+        <Plugin Type="Line Display"  Caption="Slave 2" Size="50" >
+          <Option Name="DisplayXRangeButtons" Value="1" />
+          <Option Name="DisplaySelectButtons" Value="0" />
+          <Option Name="DataPhysVal"          Value="1" />
+          <Option Name="DataUnitVal"          Value="-1" />
+        </Plugin>
+      </View>
+    </Widget>
+    
+    
+    <Widget Type="Box"   Caption="Aux. Signal"                                                             X="1" Y="11" Height="10"  >  
+      <View Channel="3"    Caption="Phi"       ChannelSelector="Hide"  TriggerSnapshotButtons="Hide"  X="0" Y="1" >
+        <Plugin Type="Disc Writer"   Caption="Slave 4" />
+        <Plugin Type="Line Display"  Caption="Slave 4" Size="50" >
+          <Option Name="DisplayXRangeButtons" Value="1" />
+          <Option Name="DisplaySelectButtons" Value="0" />
+          <Option Name="DataPhysVal"          Value="1" />
+          <Option Name="DataUnitVal"          Value="-1" />
+        </Plugin>
+      </View>
+    </Widget>
+    
+    <Widget Type="Box"   Caption="Position"                                                          X="2" Y="11" Height="10"  >  
+      <View Channel="4"    Caption="Position"   ChannelSelector="Hide"  TriggerSnapshotButtons="Hide"  X="0" Y="1" >
+        <Plugin Type="Disc Writer"   Caption="NCore 1" />
+        <Plugin Type="Line Display"  Caption="NCore 1" Size="50" >
+          <Option Name="DisplayXRangeButtons" Value="1" />
+          <Option Name="DisplaySelectButtons" Value="0" />
+          <Option Name="DataPhysVal"          Value="1" />
+          <Option Name="DataUnitVal"          Value="-1" />
+        </Plugin>
+      </View>
+    </Widget>
+  </Widget>
+  
+</Panel>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: fpsdevelop.ngc,v 1.12 2012/03/14 12:47:41 trurl Exp $ -->
+<Panel Name="FPS Development" Icon="debug.xpm" Product="0x01000000" >
+
+  <!-- Feste Kanalzuordnungen entfernt, um Koexistenz mit dem Hauptpanel zu ermöglichen -->  
+
+  <Widget Type="Box"          Caption="Generic PSet" X="0" Y="0" >
+    <Widget Type="Label"                             X="0" Y="0" Width="2" Caption="Please configure PT PI PN" />
+    <Widget Type="Label"      Caption="Gen 1"        X="0" Y="1" />
+    <Widget Type="Label"      Caption="Gen 2"        X="0" Y="2" />
+    <Widget Type="Label"      Caption="Gen 3"        X="0" Y="3" />
+    <Widget Type="Xedit"      Caption=""             X="1" Y="1" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x010203" /> <!-- generisch -->
+    <Widget Type="Xedit"      Caption=""             X="1" Y="2" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x010203" /> <!-- generisch -->
+    <Widget Type="Xedit"      Caption=""             X="1" Y="3" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x010203" /> <!-- generisch -->
+  </Widget>
+
+  <Widget Type="Box"          Caption="Generic PGet" X="0" Y="1" >
+    <Widget Type="Xedit"      Caption=""             X="0" Y="0" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x010203" /> <!-- generisch -->
+    <Widget Type="Button"     Caption="Poll"         X="1" Y="0" Address="0x0D" PsetPtin="0x010203" />
+  </Widget>
+
+  <Widget Type="Tabs"                                X="1" Y="0" Height="5" Width="10">
+    <Tab Name="Calibration">
+      <Widget Type="Box"    Style="Flat"                X="0" Y="0">
+        <Widget Type="Box"      Caption="Laser"        X="0" Y="0" >
+          <Widget Type="Label"  Caption="Temperature"  X="0" Y="0" />
+          <Widget Type="Xedit"  Caption=""             X="1" Y="0" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x000305" /> <!-- PN_LASER_TEMP -->
+          <Widget Type="Label"  Caption="Curr. coarse" X="0" Y="1" />
+          <Widget Type="Xedit"  Caption=""             X="1" Y="1" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x000303" /> <!-- PN_LASER_I_COARSE -->
+          <Widget Type="Label"  Caption="Modul. Gain"  X="0" Y="2" />
+          <Widget Type="Xedit"  Caption=""             X="1" Y="2" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x000302" /> <!-- PN_LASER_GAIN -->
+          <Widget Type="Check"  Caption="Calibration"  X="0" Y="3" Width="2" Address="0x0B"                              PsetPtin="0x000504" /> <!-- PN_CALIBRATION_ENABLE -->
+          <Widget Type="Check"  Caption="Temp Mod."    X="0" Y="4" Width="2" Address="0x0B"                              PsetPtin="0x000306" /> <!-- PN_LASER_RAMP -->
+          
+          <Widget Type="Label"  Caption=""             X="2" Y="0" Width="5"  />
+        </Widget>
+        
+        <Widget Type="Box"      Caption="Channel 1"     X="0" Y="1" >
+          <Widget Type="Label"  Caption="Gain"          X="0" Y="0" />
+          <Widget Type="Xedit"  Caption=""              X="1" Y="0" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x020001" /> <!-- PN_CHANNEL_GAIN -->
+          <Widget Type="Label"  Caption="Signal"        X="0" Y="1" />
+          <Widget Type="Xedit"  Caption=""              X="1" Y="1" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x020003" /> <!-- PN_CHANNEL_SIGNAL -->
+          <Widget Type="Label"  Caption="Phase"         X="0" Y="2" />
+          <Widget Type="Xedit"  Caption=""              X="1" Y="2" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x020002" /> <!-- PN_CHANNEL_PHASE -->
+          
+          <Widget Type="Label"  Caption="DC Gain"       X="2" Y="0" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="0" Address="0x606" Index="0" Unit="" Prefix="X" Min="0" Max="65535" />
+          <Widget Type="Label"  Caption="DC Offset"     X="2" Y="1" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="1" Address="0x605" Index="0" Unit="" Prefix="X" Min="0" Max="65535" />
+          <Widget Type="Label"  Caption="AC Gain"       X="2" Y="2" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="2" Address="0x608" Index="0" Unit="" Prefix="X" Min="0" Max="65535" />
+          <Widget Type="Label"  Caption="AC Offset"     X="2" Y="3" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="3" Address="0x607" Index="0" Unit="" Prefix="X" Min="0" Max="65535" />
+          
+          <Widget Type="Label"  Caption="DC Min"        X="4" Y="0" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="0" Address="0x610" Index="0" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+          <Widget Type="Label"  Caption="DC Max"        X="4" Y="1" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="1" Address="0x611" Index="0" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+          <Widget Type="Label"  Caption="AC Min"        X="4" Y="2" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="2" Address="0x612" Index="0" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+          <Widget Type="Label"  Caption="AC Max"        X="4" Y="3" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="3" Address="0x613" Index="0" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+        </Widget>
+        <Widget Type="Box"      Caption="Channel 2"     X="0" Y="2" >
+          <Widget Type="Label"  Caption="Gain"          X="0" Y="0" />
+          <Widget Type="Xedit"  Caption=""              X="1" Y="0" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x020101" /> <!-- PN_CHANNEL_GAIN -->
+          <Widget Type="Label"  Caption="Signal"        X="0" Y="1" />
+          <Widget Type="Xedit"  Caption=""              X="1" Y="1" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x020103" /> <!-- PN_CHANNEL_SIGNAL -->
+          <Widget Type="Label"  Caption="Phase"         X="0" Y="2" />
+          <Widget Type="Xedit"  Caption=""              X="1" Y="2" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x020102" /> <!-- PN_CHANNEL_PHASE -->
+          
+          <Widget Type="Label"  Caption="DC Gain"       X="2" Y="0" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="0" Address="0x606" Index="1" Unit="" Prefix="X" Min="0" Max="65535" />
+          <Widget Type="Label"  Caption="DC Offset"     X="2" Y="1" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="1" Address="0x605" Index="1" Unit="" Prefix="X" Min="0" Max="65535" />
+          <Widget Type="Label"  Caption="AC Gain"       X="2" Y="2" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="2" Address="0x608" Index="1" Unit="" Prefix="X" Min="0" Max="65535" />
+          <Widget Type="Label"  Caption="AC Offset"     X="2" Y="3" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="3" Address="0x607" Index="1" Unit="" Prefix="X" Min="0" Max="65535" />
+          
+          <Widget Type="Label"  Caption="DC Min"        X="4" Y="0" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="0" Address="0x610" Index="1" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+          <Widget Type="Label"  Caption="DC Max"        X="4" Y="1" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="1" Address="0x611" Index="1" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+          <Widget Type="Label"  Caption="AC Min"        X="4" Y="2" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="2" Address="0x612" Index="1" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+          <Widget Type="Label"  Caption="AC Max"        X="4" Y="3" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="3" Address="0x613" Index="1" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+        </Widget>
+        <Widget Type="Box"      Caption="Channel 3"     X="0" Y="3" >
+          <Widget Type="Label"  Caption="Gain"          X="0" Y="0" />
+          <Widget Type="Xedit"  Caption=""              X="1" Y="0" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x020201" /> <!-- PN_CHANNEL_GAIN -->
+          <Widget Type="Label"  Caption="Signal"        X="0" Y="1" />
+          <Widget Type="Xedit"  Caption=""              X="1" Y="1" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x020203" /> <!-- PN_CHANNEL_SIGNAL -->
+          <Widget Type="Label"  Caption="Phase"         X="0" Y="2" />
+          <Widget Type="Xedit"  Caption=""              X="1" Y="2" Address="0x0B" Unit="" Prefix="X" Min="0" Max="65535" PsetPtin="0x020202" /> <!-- PN_CHANNEL_PHASE -->
+          
+          <Widget Type="Label"  Caption="DC Gain"       X="2" Y="0" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="0" Address="0x606" Index="2" Unit="" Prefix="X" Min="0" Max="65535" />
+          <Widget Type="Label"  Caption="DC Offset"     X="2" Y="1" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="1" Address="0x605" Index="2" Unit="" Prefix="X" Min="0" Max="65535" />
+          <Widget Type="Label"  Caption="AC Gain"       X="2" Y="2" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="2" Address="0x608" Index="2" Unit="" Prefix="X" Min="0" Max="65535" />
+          <Widget Type="Label"  Caption="AC Offset"     X="2" Y="3" />
+          <Widget Type="Xedit"  Caption=""              X="3" Y="3" Address="0x607" Index="2" Unit="" Prefix="X" Min="0" Max="65535" />
+          
+          <Widget Type="Label"  Caption="DC Min"        X="4" Y="0" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="0" Address="0x610" Index="2" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+          <Widget Type="Label"  Caption="DC Max"        X="4" Y="1" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="1" Address="0x611" Index="2" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+          <Widget Type="Label"  Caption="AC Min"        X="4" Y="2" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="2" Address="0x612" Index="2" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+          <Widget Type="Label"  Caption="AC Max"        X="4" Y="3" />
+          <Widget Type="Xedit"  Caption=""              X="5" Y="3" Address="0x613" Index="2" Unit="" Prefix="X" Min="0" Max="65535" ReadOnly="1" />
+        </Widget> 
+        
+        <Widget Type="Box" Style="Flat"                 X="0" Y="5" Height="10"/>
+      </Widget>
+      
+      <Widget Type="Box"  Style="Flat"                      X="1" Y="0" Width="5">
+      <!-->
+        <View Dgroup="7"        Caption=""       X="1" Y="0" Height="1"  ChannelControls="Signal SampleTime">
+          <Plugin               Caption="LaserTDisplay" Type="Line Display">
+            <Option Name="DisplaySelectButtons" Value="0"/>
+            <Option Name="DisplayXRangeButtons" Value="1"/>
+            <Option Name="SynthIndex"           Value="1"/>
+          </Plugin>
+        </View>
+        -->
+        <View Dgroup="7"        Caption=""       X="1" Y="1" Height="1"   ChannelControls="Signal SampleTime" >
+          <Plugin               Caption="AuxDisplay" Type="Line Display">
+            <Option Name="DisplaySelectButtons" Value="0"/>
+            <Option Name="DisplayXRangeButtons" Value="1"/>
+            <Option Name="SynthIndex"           Value="1"/>
+          </Plugin>
+        </View>
+        
+        <View Dgroup="7"        Caption=""       X="1" Y="3" Height="1"  ChannelControls="Signal SampleTime" >
+          <Plugin               Caption="AuxDisplay" Type="Line Display">
+            <Option Name="DisplaySelectButtons" Value="0"/>
+            <Option Name="DisplayXRangeButtons" Value="1"/>
+            <Option Name="SynthIndex"           Value="1"/>
+          </Plugin>
+        </View>
+      </Widget>
+      
+    </Tab>
+
+    <Tab Name="Signal">
+      <Widget Type="Box" Style="Flat"                       X="1" Y="0" >
+        <Widget Type="Label" Caption="Position Axis 1"        X="1" Y="0" Alignment="HCenter" Font=":Bold:+2"/>
+        <Widget Type="Button" Caption="Reset"                 X="2" Y="0" Address="0x60D" Index="0" />
+      </Widget>
+      <View Dgroup="7"        Caption=""                    X="1" Y="1" Height="5" Channel="2" ChannelSelector="Hide" TriggerSnapshotButtons="Hide">
+        <Plugin Type="Disc Writer"   Caption="Position 1" />   
+        <Plugin               Caption="Position 1 Display" Type="Line Display">
+          <Option Name="DisplaySelectButtons" Value="0"/>
+          <Option Name="DisplayXRangeButtons" Value="1"/>
+          <Option Name="SynthIndex"           Value="1"/>
+        </Plugin>
+      </View>
+      <Widget Type="Box" Style="Flat"                       X="2" Y="0" >
+        <Widget Type="Label" Caption="Position Axis 2"        X="1" Y="0" Alignment="HCenter" Font=":Bold:+2"/>
+        <Widget Type="Button" Caption="Reset"                 X="2" Y="0" Address="0x60D" Index="1" />
+      </Widget>
+      <View Dgroup="7"        Caption=""                    X="2" Y="1" Height="5" Channel="3" ChannelSelector="Hide" TriggerSnapshotButtons="Hide">
+        <Plugin Type="Disc Writer"   Caption="Position 2" />
+        <Plugin               Caption="Position 2 Display" Type="Line Display">
+          <Option Name="DisplaySelectButtons" Value="0"/>
+          <Option Name="DisplayXRangeButtons" Value="1"/>
+          <Option Name="SynthIndex"           Value="1"/>
+        </Plugin>
+      </View>
+      <Widget Type="Box" Style="Flat"                       X="3" Y="0" >
+        <Widget Type="Label" Caption="Position Axis 3"        X="1" Y="0" Alignment="HCenter" Font=":Bold:+2"/>
+        <Widget Type="Button" Caption="Reset"                 X="2" Y="0" Address="0x60D" Index="2" />
+      </Widget>
+      <View Dgroup="7"        Caption=""             X="3" Y="1" Height="5" Channel="6" ChannelSelector="Hide" TriggerSnapshotButtons="Hide">
+        <Plugin Type="Disc Writer"   Caption="Position 3" />
+        <Plugin               Caption="Position 3 Display" Type="Line Display">
+          <Option Name="DisplaySelectButtons" Value="0"/>
+          <Option Name="DisplayXRangeButtons" Value="1"/>
+          <Option Name="SynthIndex"           Value="1"/>
+        </Plugin>
+      </View>
+      
+      <Widget Type="Label" Caption="Frequency Analysis Axis 1"  X="1" Y="6" Alignment="HCenter" Font=":Bold:+2"/>
+      <View Dgroup="11"        Caption=""                       X="1" Y="7" Height="5" Channel="4" ChannelSelector="Hide" >
+        <Plugin               Caption="FFT1 Float Filter" Type="Float Filter" />
+        <Plugin               Caption="FFT1 Display" Type="Line Display">
+          <Option Name="DisplaySelectButtons" Value="0"/>
+          <Option Name="DisplayXRangeButtons" Value="0"/>
+          <Option Name="SynthIndex"           Value="0"/>
+        </Plugin>
+      </View>
+      <Widget Type="Label" Caption="Frequency Analysis Axis 2"  X="2" Y="6" Alignment="HCenter" Font=":Bold:+2"/>
+      <View Dgroup="12"        Caption=""                       X="2" Y="7" Height="5" Channel="5" ChannelSelector="Hide" >
+        <Plugin               Caption="FFT2 Float Filter" Type="Float Filter" />
+        <Plugin               Caption="FFT2 Display" Type="Line Display">
+          <Option Name="DisplaySelectButtons" Value="0"/>
+          <Option Name="DisplayXRangeButtons" Value="0"/>
+          <Option Name="SynthIndex"           Value="0"/>
+        </Plugin>
+      </View>
+      <Widget Type="Label" Caption="Frequency Analysis Axis 3"  X="3" Y="6" Alignment="HCenter" Font=":Bold:+2"/>
+      <View Dgroup="13"        Caption=""                       X="3" Y="7" Height="5" Channel="7" ChannelSelector="Hide" >
+        <Plugin               Caption="FFT3 Float Filter" Type="Float Filter" />
+        <Plugin               Caption="FFT3 Display" Type="Line Display">
+          <Option Name="DisplaySelectButtons" Value="0"/>
+          <Option Name="DisplayXRangeButtons" Value="0"/>
+          <Option Name="SynthIndex"           Value="0"/>
+        </Plugin>
+      </View>
+    </Tab>
+  </Widget>
+
+</Panel>

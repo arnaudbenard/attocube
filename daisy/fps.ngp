@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Profile X="0" Y="0" AppMode="0xFF" >
+  <Panel File="fps_fftplugin.ngc"/>
+  <Persistence>
+    <Persist Addr="0x604" Index="0" Value="1520000000"/>
+  </Persistence>
+</Profile>

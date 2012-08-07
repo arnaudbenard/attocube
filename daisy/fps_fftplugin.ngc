@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: fps_fftplugin.ngc,v 1.11 2012/05/04 17:16:11 trurl Exp $ -->
+<Panel Name="FPS3010" Height="800" Icon="debug.xpm" Product="0x01000000" >
+
+  <Widget Type="Constant" Address="0x3B" Index="0" DefVal="7"  />
+  <Widget Type="Constant" Address="0x3B" Index="1" DefVal="7"  />
+  <Widget Type="Constant" Address="0x3B" Index="2" DefVal="7"  />
+  <Widget Type="Constant" Address="0x3B" Index="3" DefVal="7"  />
+  <Widget Type="Constant" Address="0x3B" Index="4" DefVal="11" />
+  <Widget Type="Constant" Address="0x3B" Index="5" DefVal="12" />
+  <Widget Type="Constant" Address="0x3B" Index="6" DefVal="7"  />
+  <Widget Type="Constant" Address="0x3B" Index="7" DefVal="13" />
+  <Widget Type="Constant" Address="0x3B" Index="8" DefVal="7"  />
+  
+  <Widget Type="Constant" Address="0x31" Index="0" DefVal="18" />
+  <Widget Type="Constant" Address="0x31" Index="1" DefVal="20" />
+  <Widget Type="Constant" Address="0x31" Index="2" DefVal="5"  />
+  <Widget Type="Constant" Address="0x31" Index="3" DefVal="9"  />
+  <Widget Type="Constant" Address="0x31" Index="4" DefVal="27" />
+  <Widget Type="Constant" Address="0x31" Index="5" DefVal="28" />
+  <Widget Type="Constant" Address="0x31" Index="6" DefVal="13" />
+  <Widget Type="Constant" Address="0x31" Index="7" DefVal="29" />
+  <Widget Type="Constant" Address="0x31" Index="8" DefVal="22" />
+  
+  <Widget Type="Constant" Address="0x32" Index="0" DefVal="40" />
+  <Widget Type="Constant" Address="0x32" Index="1" DefVal="40" />
+  <Widget Type="Constant" Address="0x32" Index="2" DefVal="40" />
+  <Widget Type="Constant" Address="0x32" Index="3" DefVal="40" />
+  <Widget Type="Constant" Address="0x32" Index="6" DefVal="40" />
+  <Widget Type="Constant" Address="0x32" Index="8" DefVal="40" />
+ 
+  <Widget Type="Constant" Address="0x35" Index="0" DefVal="1" />
+  <Widget Type="Constant" Address="0x35" Index="1" DefVal="1" />
+  <Widget Type="Constant" Address="0x35" Index="2" DefVal="1" />
+  <Widget Type="Constant" Address="0x35" Index="3" DefVal="1" />
+  <Widget Type="Constant" Address="0x35" Index="6" DefVal="1" />
+  <Widget Type="Constant" Address="0x35" Index="8" DefVal="1" />
+ 
+
+  <Widget Type="Tabs"                                X="1" Y="0">
+    <Tab Name="Alignment">
+      <Widget Type="Box"    Style="Flat" X="0" Y="0" Align="Left">
+        <Widget Type="Box"    Caption="Alignment" X="0" Y="0" >
+            <Widget Type="Check"  Caption="On"        X="0" Y="0" Address="0x669" Index="0" />
+            <Widget Type="Led"    Caption=""          X="1" Y="0" Address="0x66A" Green="1" DefaultColor="Grey" Red="-1"  />
+            <Widget Type="Label"  Caption="Running"   X="2" Y="0"/>
+            <Widget Type="Label"  Caption=""          X="3" Y="0"/>
+            <Widget Type="Button" Caption="Save"      X="6" Y="0" Address="0x674" Index="0" Align="VCenter" />
+        </Widget>
+        
+        <Widget Type="Box"    Caption="Adjustment"      X="1" Y="0" >
+            <Widget Type="Led"    Caption=""            X="0" Y="0" Address="0x66A" Red="2" DefaultColor="Grey" Green="-1" />
+            <Widget Type="Label"  Caption="Running"     X="1" Y="0"/>
+            <Widget Type="Edit"                         X="2" Y="0" Address="0x66A" />
+        </Widget>
+      </Widget>
+      
+      
+      
+      
+      <Macro Type="Repeater" Count="3">
+        <Widget Type="Box" Style="Flat"                    X="$Counter$" Y="1" >
+          <Widget Type="Label" Caption="Axis $+(Counter,1)$"     X="0" Y="1" Alignment="Left" Font=":Bold:+2"/>
+          <Widget Type="Label" Caption=""                        X="1" Y="1" Width="10" />
+          <Widget Type="Label"  Caption="Mode"                   X="11"  Y="1"/>
+          <Widget Type="Combo"  Caption=""                       X="12"  Y="1" Address="0x667" Index="$Counter$" Choices="Dual pass=0:Single pass=1"  />
+          <Widget Type="Label"  Caption=" "                      X="13"  Y="1"/>
+          <Widget Type="Label" Caption="Enable"                  X="14" Y="1" Alignment="Right" />
+          <Widget Type="Led"   Address="0x670" Index="$Counter$" X="15" Y="1" Green="1" Grey="0" Red="-1" />
+          <Widget Type="Label" Caption=""                        X="16" Y="1" />
+          <Widget Type="Label" Caption="Valid"                   X="17" Y="1" Alignment="Right" />
+          <Widget Type="Led"   Address="0x671" Index="$Counter$" X="18" Y="1" Green="1" Grey="0" Red="-1" />
+          <Widget Type="Label" Caption=""                        X="19" Y="1" />
+        </Widget>
+        <View Dgroup="7" Channel="$??(Counter,0,1,8)$"     X="$Counter$" Y="2" ChannelControls=" " TriggerSnapshotButtons="Hide" ChannelSelector="Hide">
+          <Plugin Type="Line Display"  Caption="DCDisplay Axis $+(Counter,1)$">
+            <Option Name="DisplaySelectButtons" Value="0"/>
+            <Option Name="DisplayXRangeButtons" Value="1"/>
+            <Option Name="SynthIndex"           Value="1"/>
+            <Option Name="HorizontalLines"      Value="0.0 1.2"/>
+            <Option Name="FixedYScale"          Value="-0.2 1.4"/>
+            <Option Name="DataRangeX"           Value="20000"/>
+          </Plugin>
+        </View>
+      </Macro>
+    </Tab>
+
+
+    <Tab Name="Position">
+      <Macro Type="Repeater" Count="3">
+        <Widget Type="Box"                                              X="$Counter$" Y="0" >              
+          <Widget Type="Box" Style="Flat"                               X="0" Y="0" >
+            <Widget Type="Label" Caption="Position Axis $+(Counter,1)$"      X="0" Y="0" Align="VCenter" Font=":Bold:+2"/>
+            <View Dgroup="7"     Channel="$??(Counter,2,3,6)$"               X="1" Y="0" Align="VCenter" ChannelSelector="Hide" TriggerSnapshotButtons="Hide" ChannelControls=" ">
+              <Plugin Type="Text Display">
+                <Option Name="style"           Value="1"/>
+              </Plugin>
+            </View>
+            <Widget Type="Button" Caption="Reset"  Address="0x60D" Index="$Counter$" X="2" Y="0" Align="VCenter" />
+          </Widget>
+
+          <Widget Type="Box" Style="Flat"                        X="0" Y="1" >
+            <Widget Type="Label" Caption="Enable"                  X="2"  Y="1" Alignment="Right" />
+            <Widget Type="Led"   Address="0x670" Index="$Counter$" X="3"  Y="1" Green="1" Grey="0" Red="-1" />
+            <Widget Type="Label" Caption=""                        X="4"  Y="1" />
+            <Widget Type="Label" Caption="Valid"                   X="5"  Y="1" Alignment="Right" />
+            <Widget Type="Led"   Address="0x671" Index="$Counter$" X="6"  Y="1" Green="1" Grey="0" Red="-1" />
+            <Widget Type="Label" Caption=""                        X="7"  Y="1" Width="10"/>
+            <Widget Type="Label" Caption="Sample Time"             X="15" Y="1" Align="Right Bottom" Alignment="Right Bottom" />
+          </Widget>
+      
+          <View Dgroup="7"        Channel="$??(Counter,2,3,6)$"         X="0" Y="2" Height="5" ChannelSelector="Hide" TriggerSnapshotButtons="Hide" ChannelControls="SampleTime" >
+            <Plugin Type="Disc Writer"   Caption="Position $+(Counter,1)$" />
+            <Plugin Type="Line Display"  Caption="Position $+(Counter,1)$ Display">
+              <Option Name="DisplaySelectButtons" Value="0"/>
+              <Option Name="DisplayXRangeButtons" Value="1"/>
+              <Option Name="SynthIndex"           Value="1"/>
+              <Option Name="DataRangeX"           Value="20000"/>
+            </Plugin>
+          </View>
+      
+          <Widget Type="Label"                                          X="0" Y="7" />
+      
+          <Widget Type="Label"                                          X="0" Y="8" Caption="Frequency Analysis Axis $+(Counter,1)$" Alignment="Left" Font=":Bold:+2"/>
+          <View Dgroup="7" Channel="$??(Counter,2,3,6)$"                X="0" Y="9" Height="5" Caption="Frequency Analysis $+(Counter,1)$" TriggerSnapshotButtons="Hide" ChannelSelector="Hide" ChannelControls=" ">
+            <Plugin Type="FFT Data Filter" Caption="FFT" >
+              <Option Name="FftSizeMax" Value="65536" />
+              <Option Name="ScalingEntries" Value="Absolute [m]:Relative [dB]:Pwr Dens. [dBm]:Pwr Spec. [dBm]" />
+            </Plugin>
+            <Plugin Type="Line Display"  Size="50" Caption="FFT Display $+(Counter,1)$">
+              <Option Name="DisplayToolBar" Value="1" />
+            </Plugin>
+          </View>          
+        </Widget>
+      </Macro>
+    </Tab>
+    
+    
+    <Tab Name="Interface">
+    <!--
+      <Macro Type="Repeater" Count="3" >
+        <Widget Type="Box" Caption="Axis $+(Counter,1)$" X="$Counter$" Y="0">
+          <Widget Type="Label"  Caption="AB Res"                Rich="0" Align="Left"              X="0" Y="6" />
+          <Widget Type="Xedit"  Caption=""                      Address="0x614" Index="$Counter$"  X="1" Y="6"   Display="Float" Scale="1000." Unit="m" Prefix="n"  Persist="1" />
+          
+          <Widget Type="Label"  Caption="AB Freq" Rich="0"      Align="Left Bottom"                X="0" Y="7" />
+          <Widget Type="Combo"  Caption=""                                                         X="1" Y="7" Address="0x668" Index="$Counter$" Choices="50MHz=0:25MHz=1:12,5MHz=3:10MHz=4:5MHz=9:2,5MHz=19:1MHz=49:500kHz=99:250kHz=199:125kHz=399:100kHz=499:50kHz=999:25kHz=1999:10kHz=4999" Persist="1" />
+        </Widget>
+      </Macro>
+      -->
+      
+      <Widget Type="Box" Caption="Quadrature Axis 1" X="0" Y="0">
+          <Widget Type="Label"  Caption="AB Res"                Rich="0" Align="Left"              X="0" Y="6" />
+          <Widget Type="Xedit"  Caption=""                      Address="0x614" Index="0"  X="1" Y="6"   Display="Float" Scale="1000." Unit="m" Prefix="n"  Persist="1" />
+          
+          <Widget Type="Label"  Caption="AB Period" Rich="0"      Align="Left Bottom"              X="0" Y="7" />
+          <Widget Type="Xedit"  Caption=""                                                         X="1" Y="7" Address="0x668" Index="0" Max="1310700" Min="40" Prefix="n" Scale="0.05" Unit="s" Persist="1" />
+        </Widget>
+        
+        <Widget Type="Box" Caption="Quadrature Axis 2" X="1" Y="0">
+          <Widget Type="Label"  Caption="AB Res"                Rich="0" Align="Left"              X="0" Y="6" />
+          <Widget Type="Xedit"  Caption=""                      Address="0x614" Index="1"  X="1" Y="6"   Display="Float" Scale="1000." Unit="m" Prefix="n"  Persist="1" />
+          
+          <Widget Type="Label"  Caption="AB Period" Rich="0"      Align="Left Bottom"              X="0" Y="7" />
+          <Widget Type="Xedit"  Caption=""                                                         X="1" Y="7" Address="0x668" Index="1" Max="1310700" Min="40" Prefix="n" Scale="0.05" Unit="s" Persist="1" />
+        </Widget>
+        
+        <Widget Type="Box" Caption="Quadrature Axis 3" X="2" Y="0">
+          <Widget Type="Label"  Caption="AB Res"                Rich="0" Align="Left"              X="0" Y="6" />
+          <Widget Type="Xedit"  Caption=""                      Address="0x614" Index="2"  X="1" Y="6"   Display="Float" Scale="1000." Unit="m" Prefix="n"  Persist="1" />
+          
+          <Widget Type="Label"  Caption="AB Period" Rich="0"      Align="Left Bottom"              X="0" Y="7" />
+          <Widget Type="Xedit"  Caption=""                                                         X="1" Y="7" Address="0x668" Index="2" Max="1310700" Min="40" Prefix="n" Scale="0.05" Unit="s" Persist="1" />
+        </Widget>
+        
+        
+        <Widget Type="Box" Caption="HSSL Axis 1"                                                   X="0" Y="1">
+          <Widget Type="Label"  Caption="Period"                Rich="0" Align="Left"              X="0" Y="6" />
+          <Widget Type="Xedit"  Caption=""                                                         X="1" Y="6"  Address="0x672" Index="0" Max="1310700" Min="20" Prefix="n" Scale="0.05" Unit="s" />
+          
+          <Widget Type="Label"  Caption="Wait"    Rich="0"      Align="Left Bottom"                X="0" Y="7" />
+          <Widget Type="Xedit"  Caption=""                                                         X="1" Y="7"  Address="0x673" Index="0" Max="1310700" Min="20" Prefix="n" Scale="0.05" Unit="s"  />
+        </Widget>
+        
+        <Widget Type="Box" Caption="HSSL Axis 2"                                                   X="1" Y="1">
+          <Widget Type="Label"  Caption="Period"                Rich="0" Align="Left"              X="0" Y="6" />
+          <Widget Type="Xedit"  Caption=""                                                         X="1" Y="6"  Address="0x672" Index="1" Max="1310700" Min="20" Prefix="n" Scale="0.05" Unit="s" />
+          
+          <Widget Type="Label"  Caption="Wait"    Rich="0"      Align="Left Bottom"                X="0" Y="7" />
+          <Widget Type="Xedit"  Caption=""                                                         X="1" Y="7"  Address="0x673" Index="1" Max="1310700" Min="20" Prefix="n" Scale="0.05" Unit="s"  />
+        </Widget>
+        
+        <Widget Type="Box" Caption="HSSL Axis 3"                                                   X="2" Y="1">
+          <Widget Type="Label"  Caption="Period"                Rich="0" Align="Left"              X="0" Y="6" />
+          <Widget Type="Xedit"  Caption=""                                                         X="1" Y="6"  Address="0x672" Index="2" Max="1310700" Min="20" Prefix="n" Scale="0.05" Unit="s" />
+          
+          <Widget Type="Label"  Caption="Wait"    Rich="0"      Align="Left Bottom"                X="0" Y="7" />
+          <Widget Type="Xedit"  Caption=""                                                         X="1" Y="7"  Address="0x673" Index="2" Max="1310700" Min="20" Prefix="n" Scale="0.05" Unit="s"  />
+        </Widget>
+        
+        <Widget Type="Button" Caption="Save"      X="0" Y="2" Address="0x675" Index="0" Align="VCenter" />
+        
+      <Widget Type="Box" Style="Flat" X="3" Y="0" Width="10" />
+      <Widget Type="Box" Style="Flat" X="0" Y="3" Height="10" />
+    </Tab>
+  </Widget>
+
+</Panel>
